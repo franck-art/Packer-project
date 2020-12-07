@@ -10,7 +10,7 @@
 * [Packer installation link](https://www.packer.io/downloads)
 
 ## Service Account
-Put the service account path in credential argument of provider configuration:  [credential provider](https://github.com/franck-art/Packer-project/blob/master/provider.tf)
+Put the path of your service account in credential argument of provider configuration:  [Credentials](https://github.com/franck-art/Packer-project/blob/master/provider.tf)
 
 ## Run packer to install nginx image
 
