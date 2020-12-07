@@ -1,0 +1,30 @@
+{
+
+   "variables": {
+     "gcp_account_file": "{{env `GOOGLE_APPLICATION_CREDENTIALS`}}"
+   },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "phonic-command-291302",
+      "account_file": "{{user `gcp_account_file`}}",
+      "source_image_family": "centos-7",
+      "ssh_username": "packer",
+      "zone": "us-central1-a",
+      "image_description": "Image to install nginx",
+      "image_name": "packer-nginx"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "{{ .Vars }} sudo -E bash '{{ .Path }}'",
+      "inline": [
+        "sudo yum install epel-release -y",
+        "sudo yum update -y ",
+        "sudo yum install nginx -y",
+        "sudo systemctl start nginx && systemctl enable nginx"
+      ]
+    }
+  ]
+}
